@@ -1,4 +1,4 @@
-## v-model / v-if / v-show
+## VUE 디렉티브
 
 - v-model : 단방향 데이터 바인딩
   
