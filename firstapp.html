@@ -7,17 +7,43 @@
 </head>
 <body>
     <div id="app">
-        <!-- v-if true 일때만 보여주는 디렉티브 -->
-        <h1 v-if="visible">나는 보입니다.</h1>
-        <h1 v-show="visible">나는 보입니다.</h1>
-        <!-- v-if 사용 권장 : 오래걸리는 처리 내용이 되면 v-if는 false일때 처리를 안하고 show는 false일때 Display none으로 처리함 -->
+        <ul>
+            <!-- v-for 배열이나 데이터 반복 출력 디렉티브 -->
+            <li v-for="n in numbers">{{ n }}</li>
+        </ul>
+        <table>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+            </tr>
+            <tbody>
+                <tr v-for="p in people" v-if="p.age >= 30">
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.age }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                visible: false
+                numbers: [1,2,3,4,5,6,7],
+                people: [
+                    {
+                        name: '이순신',
+                        age: 30
+                    },
+                    {
+                        name: '신사임당',
+                        age: 40
+                    },
+                    {
+                        name: '이율곡',
+                        age: 20
+                    },
+                ]
             }
         })
     </script>
