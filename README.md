@@ -2,7 +2,7 @@
 
 - v-model : 단방향 데이터 바인딩
   
-- v-if visible: true/false 값으로 처리하여 true일 때 보여주는 디렉티브
+- v-if : visible: true/false 값으로 처리하여 true일 때 보여주는 디렉티브
   
 - v-show false일때 Display none으로 처리
   
@@ -22,4 +22,44 @@
           })
       </script>
 
-## 
+- v-for : 배열이나 데이터 반복 출력 디렉티브
+
+      <div id="app">
+          <ul>
+              <li v-for="n in numbers">{{ n }}</li>
+          </ul>
+          <table>
+              <tr>
+                  <th>이름</th>
+                  <th>나이</th>
+              </tr>
+              <tbody>
+                  <tr v-for="p in people" v-if="p.age >= 30">
+                      <td>{{ p.name }}</td>
+                      <td>{{ p.age }}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  
+          var app = new Vue({
+              el: '#app',
+              data: {
+                  numbers: [1,2,3,4,5,6,7],
+                  people: [
+                      {
+                          name: '이순신',
+                          age: 30
+                      },
+                      {
+                          name: '신사임당',
+                          age: 40
+                      },
+                      {
+                          name: '이율곡',
+                          age: 20
+                      },
+                  ]
+              }})
+
+- v-on
