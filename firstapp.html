@@ -5,28 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        button{
+            background: white;
+            border: 1px solid;
+            margin:  0 5px;
+            cursor: pointer;
+        }
+
+        button.active{
+            background: blue;
+            color: white;
+            border: blue;
+        }
+
+        img{
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
-        <h1 v-if="visible">나는 보입니다.</h1>
-        <button v-on:click="visible = !visible">버튼</button>
-        <hr />
-        <button v-on:click="alert('버튼을 클릭했습니다.')">버튼</button>
-        <hr />
-        <button v-on:dblclick="alert('더블 클릭했습니다.')">버튼</button>
+        <button v-for="p in pages" :class="{'active' : page === p }" @click="page = p">{{p}}</button>
+        <hr/>
+        <div v-for="p in pages" v-if="page === p">
+            <p>{{p}} contents</p>
+            <img :src=" 'img/' + p + '.png' " />
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                visible: true,
-            },
-            methods: {
-                alert(message) {
-                    window.alert(message);
-                },
+                page: 'page1',
+                pages: ['page1', 'page2', 'page3', 'page4']
             }
         });
     </script>
