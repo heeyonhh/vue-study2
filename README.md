@@ -62,4 +62,47 @@
                   ]
               }})
 
-- v-on
+- v-on : 클릭이벤트 @
+
+- v-bind : 동적 엘리먼트 값을 변경해주어야 할때 활용
+
+    <style>
+      button{
+          background: white;
+          border: 1px solid;
+          margin:  0 5px;
+          cursor: pointer;
+      }
+      
+      button.active{
+          background: blue;
+          color: white;
+          border: blue;
+      }
+      
+      img{
+          width: 100px;
+      }
+    </style>
+
+    <div id="app">
+        <button v-for="p in pages" :class="{'active' : page === p }" @click="page = p">{{p}}</button>
+        <hr/>
+        <div v-for="p in pages" v-if="page === p">
+            <p>{{p}} contents</p>
+            <img :src=" 'img/' + p + '.png' " />
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                page: 'page1',
+                pages: ['page1', 'page2', 'page3', 'page4']
+            }
+        });
+    </script>
+
+
+v-bind : 로 치환 / v-on @ 로 치환
